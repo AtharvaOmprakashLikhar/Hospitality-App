@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 220 90% 56%;       /* Vibrant Blue */
+    --color-secondary: 160 84% 39%;     /* Teal Green */
+    --color-bg: 210 20% 98%;            /* Light gray-blue */
+    --color-surface: 0 0% 100%;         /* White */
+    --color-text: 220 15% 10%;          /* Dark gray */
+    --color-btn: 220 90% 56%;           /* Primary button */
+    --color-btn-hover: 220 90% 48%;
+    --color-btn-active: 220 90% 40%;
+    --color-btn-disabled: 220 10% 80%;
+    --color-border: 220 12% 90%;        /* Light gray border */
+  }
+
+  .dark {
+    --color-primary: 220 90% 60%;
+    --color-secondary: 160 84% 45%;
+    --color-bg: 224 71% 4%;             /* Deep dark blue-gray */
+    --color-surface: 224 71% 8%;        /* Slightly lighter dark surface */
+    --color-text: 210 20% 98%;          /* Light gray text */
+    --color-btn: 220 90% 60%;
+    --color-btn-hover: 220 90% 52%;
+    --color-btn-active: 220 90% 44%;
+    --color-btn-disabled: 220 10% 30%;
+    --color-border: 220 12% 20%;        /* Dark gray border */
+  }
+}
