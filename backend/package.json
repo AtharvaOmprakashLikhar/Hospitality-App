@@ -7,9 +7,9 @@
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "prisma:generate": "prisma generate",
+    "prisma:generate": "npx prisma generate",
     "prisma:migrate": "prisma migrate dev",
-    "postinstall": "prisma generate"
+    "postinstall": "node scripts/postinstall.js"
   },
   "dependencies": {
     "@prisma/client": "^5.12.1",
@@ -22,6 +22,7 @@
     "multer": "^1.4.5-lts.1",
     "pdf-lib": "^1.17.1",
     "pg": "^8.11.5",
+    "prisma": "^5.12.1",
     "sharp": "^0.35.3",
     "socket.io": "^4.7.5"
   },
@@ -33,7 +34,6 @@
     "@types/multer": "^1.4.11",
     "@types/node": "^20.12.7",
     "@types/pg": "^8.11.5",
-    "prisma": "^5.12.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.4.5"
   }

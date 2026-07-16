@@ -85,10 +85,14 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 });
 
 // Database Auto-seeding and Server Listening
-server.listen(PORT, async () => {
-  console.log(`HospitalityOS Backend running on port ${PORT}`);
-  // Run seed check
-  await seedDatabase();
-});
+if (!process.env.VERCEL) {
+  server.listen(PORT, async () => {
+    console.log(`HospitalityOS Backend running on port ${PORT}`);
+    // Run seed check
+    await seedDatabase();
+  });
+} else {
+  console.log('Running backend in Vercel Serverless environment');
+}
 
 export default app;
