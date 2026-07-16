@@ -384,7 +384,7 @@ export async function seedDatabase() {
     const defaultAdminName = 'atharvalikhar';
     const normalizedAdminEmail = String(defaultAdminEmail).trim().toLowerCase();
     const existingAdmin = await prisma.user.findUnique({ where: { email: normalizedAdminEmail } });
-    const defaultAdminPassword = '12345';
+    const defaultAdminPassword = '123456789';
     const hashedAdminPassword = await bcrypt.hash(defaultAdminPassword, 12);
     if (!existingAdmin) {
       await prisma.user.create({
