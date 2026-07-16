@@ -4,6 +4,7 @@ import http from 'http';
 import { Server } from 'socket.io';
 import path from 'path';
 import dotenv from 'dotenv';
+import { execSync } from 'child_process';
 
 // Import Route modules
 import themeRouter from './routes/theme.routes';
@@ -57,6 +58,26 @@ app.use('/api/rooms', roomsRouter);
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', environment: process.env.NODE_ENV || 'development' });
+});
+
+// Seed database endpoint (temporary for Vercel database initialization)
+app.get('/api/seed', async (req, res) => {
+  try {
+    console.log('[API Seed] Seeding data...');
+    await seedDatabase();
+    
+    res.json({ 
+      status: 'success', 
+      message: 'Database seeded successfully.' 
+    });
+  } catch (err: any) {
+    console.error('[API Seed Error]', err);
+    res.status(500).json({ 
+      status: 'error', 
+      message: err.message || 'Seeding failed', 
+      details: err.stack 
+    });
+  }
 });
 
 // Socket.io Event Handling

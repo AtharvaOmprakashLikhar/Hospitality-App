@@ -84,14 +84,15 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   loginAs: async (role) => {
     const roleEmails: Record<string, string> = {
       SUPER_ADMIN: 'superadmin@hospitalityos.com',
-      ADMIN: 'admin@hospitalityos.com',
+      ADMIN: 'atharvalikhar@gmail.com',
       MANAGER: 'manager@hospitalityos.com',
       WAITER: 'waiter@hospitalityos.com',
       KITCHEN: 'kitchen@hospitalityos.com',
     };
     const email = roleEmails[role];
     if (email) {
-      await get().login(email, 'password123');
+      const password = role === 'ADMIN' ? '123456789' : 'password123';
+      await get().login(email, password);
     }
   },
 
